@@ -1,0 +1,17 @@
+/* Media query for Samsung Galaxy 8 */
+@media only screen and (max-width: 450px) and (-webkit-device-pixel-ratio: 3.5), 
+       only screen and (max-width: 450px) and (min-device-pixel-ratio: 3.5) {
+  .main {
+    width: 75% !important;
+  }
+}
+@media only screen and (max-width: 375px) and (-webkit-device-pixel-ratio: 3.0), 
+       only screen and (max-width: 375px) and (min-device-pixel-ratio: 3.0) {
+  .main {
+    width: 100% !important;
+  }
+}
+.main{
+  background-color:white;
+  min-width: 250px;
+}

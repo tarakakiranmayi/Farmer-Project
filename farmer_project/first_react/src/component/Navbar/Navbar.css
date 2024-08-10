@@ -1,0 +1,31 @@
+
+  
+  .list-group-item-action {
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #ffffff; /* Light text color */
+    text-decoration: none; /* Remove underline from links */
+    display: block;
+  }
+  
+  .list-group-item-action:hover {
+    background-color: #3a3d42; /* Slightly lighter background on hover */
+  }
+  
+  .list-group-item-action.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .navbar-toggler {
+    margin-right: auto;
+  }
+  
+  .navbar-nav.ms-auto {
+    margin-left: auto;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  

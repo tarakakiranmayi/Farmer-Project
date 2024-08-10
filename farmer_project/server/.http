@@ -1,0 +1,276 @@
+
+
+post http://localhost:3030/userapi/register
+Content-Type: application/json
+
+{
+    "name":"kiranmayi",
+     "email":"kiranmayi@gmail.com",
+     "password":"Tr0ub4dor&3!",
+     "Type":"user"
+}
+
+###
+
+post http://localhost:3030/userapi/login
+Content-Type: application/json
+
+{
+    
+     "email":"kiranmayi@gmail.com",
+     "password":"Tr0ub4dor&3!",
+     "Type":"user"
+}
+###
+post http://localhost:3030/usersapi/register
+Content-Type: application/json
+
+{
+    "name":"kiranmayi1",
+     "email":"kiranmayi@gmail.com",
+     "password":"kiran",
+     "Type":"farmer"
+}
+
+
+###
+post http://localhost:3030/farmersapi/Details
+Content-Type: application/json
+
+{
+    
+    "Rating": 4.5,
+    "comments": [
+        {
+            "user": "John Doe",
+            "comment": "Very hardworking and reliable.",
+            "date": "2024-06-01"
+        },
+        {
+            "user": "Jane Smith",
+            "comment": "Great work but could improve on timeliness.",
+            "date": "2024-05-20"
+        }
+    ],
+    "description": "Experienced farmer with expertise in organic farming and irrigation techniques.",
+    "status": true,
+    "price": 1500,
+    "area": "Hyderabad",
+    "photo": "https://example.com/photo.jpg",
+    "experience": "10 years",
+    "education": "Diploma in Agriculture",
+    "name": "Ravi Kumar",
+    "contact_number": "9876543210",
+    "email": "ravikumar@example.com",
+    "address": "123, Green Field, Hyderabad, Telangana, India",
+    "work_hours_per_day": 8,
+    "availability": "Monday to Saturday, 9 AM to 5 PM",
+    "skills": ["Organic Farming", "Irrigation", "Soil Testing"],
+    "languages_spoken": ["Telugu", "Hindi", "English"],
+    "tools_and_equipment": ["Tractor", "Plow", "Irrigation Pump"],
+    "payment_methods": ["UPI", "Cash", "Bank Transfer"],
+    "average_response_time": "2 hours",
+    "total_jobs_completed": 150,
+    "successful_jobs": 140,
+    "failed_jobs": 10,
+    "certifications": ["Organic Farming Certification", "Irrigation Techniques Certificate"],
+    "reviews": [
+        {
+            "user": "John Doe",
+            "rating": 5,
+            "review": "Highly recommend Ravi for any farming tasks.",
+            "date": "2024-06-01"
+        },
+        {
+            "user": "Jane Smith",
+            "rating": 4,
+            "review": "Good work overall, but can improve on punctuality.",
+            "date": "2024-05-20"
+        }
+    ],
+    "join_date": "2020-01-15",
+    "last_updated": "2024-06-20"
+}
+
+
+
+###
+get http://localhost:3030/organicfarm/12334
+###
+
+post http://localhost:3030/organicfarm/productUpload
+Content-Type: application/json
+
+{
+    "productId": "P12345",
+    "productname": "Organic Tomatoes",
+    "product_price": 50,
+    "farmer_contact": [
+        {
+            "name": "Ravi Kumar",
+            "contact_number": "9876543210",
+            "email": "ravikumar@example.com",
+            "address": "123, Green Field, Hyderabad, Telangana, India"
+        }
+    ],
+    "review": [
+        {
+            "rating": 4.5,
+            "comments": "Fresh and good quality tomatoes."
+        },
+        {
+            "rating": 4.0,
+            "comments": "Tastes great, but delivery was slightly delayed."
+        }
+    ],
+    "manufacture_date": "2024-06-01",
+    "shipping_by": "Farm Fresh Logistics",
+    "expiry_date": "2024-06-15",
+    "quantity": 100,
+    "unit": "kg",
+    "category": "Vegetables",
+    "description": "Freshly harvested organic tomatoes grown without pesticides.",
+    "photo": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+    "certifications": ["Organic Certification"],
+    "discount": 10,
+    "availability": true,
+    "location": "Hyderabad",
+    "payment_methods": ["UPI", "Cash", "Credit Card"],
+    "shipping_cost": 20,
+    "delivery_time": "2-3 days",
+    "packaging_details": "Packed in eco-friendly biodegradable bags."
+}
+
+
+####
+get http://localhost:3030/postMail/rahulsaranga@gmail.com
+
+###
+post http://localhost:3030/contract/farmland
+Content-Type: application/json
+
+{
+    "farmland_area": "Hyderabad",
+    "no_of_acres": 3,
+    "owner": "Ravi",
+    "available_tools": ["Tractor", "Plow", "Irrigation Pump"],
+    "photos": ["https://example.com/photo1.jpg", "https://example.com/photo2.jpg"],
+    "date_of_created_account_on_this_platform": "2024-01-15",
+    "previous_farmers_review": [
+        {
+            "name": "John Doe",
+            "comment": "The land is very fertile and well-maintained."
+        },
+        {
+            "name": "Jane Smith",
+            "comment": "Great location and the tools provided were in good condition."
+        }
+    ],
+    "soil_type": "Loamy",
+    "water_sources": ["Well", "Irrigation Canal"],
+    "fencing": true,
+    "electricity_availability": true,
+    "nearest_market_distance": 5,  
+    "irrigation_system": "Drip Irrigation",
+    "past_crops_grown": ["Wheat", "Rice", "Tomatoes"],
+    "lease_terms": "Minimum 1 year",
+    "rent_price_per_acre": 10000,  
+    "contact_details": {
+        "name": "Ravi Kumar",
+        "contact_number": "9876543210",
+        "email": "ravikumar@example.com"
+    },
+    "geo_coordinates": {
+        "latitude": 17.3850,
+        "longitude": 78.4867
+    },
+    "accessibility": "Easy access by road",
+    "facilities": ["Storage Shed", "Worker Housing", "Basic Farming Tools"],
+    "environmental_certifications": ["Organic Certification"],
+    "security": {
+        "fencing": true,
+        "night_guard": true
+    },
+    "additional_services": ["Soil Testing", "Crop Consultation"],
+    "ratings": 4.7,
+    "description": "A fertile and well-maintained farmland ideal for a variety of crops. Equipped with modern irrigation systems and easy access to markets."
+}
+
+
+
+###
+post  http://localhost:3030/householdfarm/new-register
+Content-Type: application/json
+
+{
+    "location": "Hyderabad",
+    "area_size_sqft": 100, 
+    "owner": "Ravi",
+    "available_tools": ["Watering Can", "Gardening Trowel", "Pruning Shears"],
+    "photos": ["https://example.com/photo1.jpg", "https://example.com/photo2.jpg"],
+    "date_of_created_account_on_this_platform": "2024-01-15",
+    "previous_users_review": [
+        {
+            "name": "John Doe",
+            "comment": "Perfect setup for a small urban garden. Highly recommend!"
+        },
+        {
+            "name": "Jane Smith",
+            "comment": "Well-maintained and easy to manage with the provided tools."
+        }
+    ],
+    "plant_types": ["Herbs", "Vegetables", "Flowers"],
+    "water_sources": ["Tap"],
+    "sunlight_exposure": "6 hours per day",
+    "soil_type": "Potting Soil",
+    "fertilizers_provided": ["Organic Compost"],
+    "nearest_market_distance": 2, 
+    "irrigation_system": "Manual Watering",
+    "current_plants": ["Basil", "Tomatoes", "Marigold"],
+    "maintenance_guidelines": "Water daily, use organic compost once a month",
+    "monthly_rent": 2000,  
+    "contact_details": {
+        "name": "Ravi Kumar",
+        "contact_number": "9876543210",
+        "email": "ravikumar@example.com"
+    },
+    "geo_coordinates": {
+        "latitude": 17.3850,
+        "longitude": 78.4867
+    },
+    "accessibility": "Easily accessible from the living room",
+    "facilities": ["Water Tap", "Plant Shelves", "Hanging Pots"],
+    "environmental_certifications": ["Organic Gardening Certification"],
+    "security": {
+        "balcony_grill": true,
+        "locked_garden_area": true
+    },
+    "additional_services": ["Monthly Maintenance", "Gardening Tips Consultation"],
+    "ratings": 4.8,
+    "description": "A compact and efficient balcony garden setup ideal for urban households. Includes essential tools and guidance for maintaining a variety of plants."
+}
+###
+
+get http://localhost:3030/householdfarm/new-register
+
+
+
+###
+get http://localhost:3030/userapi/user/66a94b733e2b83394ad06681
+
+###
+post http://localhost:3030/organicfarm/productUpload
+Content-Type: application/json
+
+ {
+    "productName": "Golden Apples",
+    "productPrice": "200",
+    "category": "Fruits",
+    "description": "Crisp and sweet apples",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcN0wE5CFIVempC6tMvJimZQ&s",
+    "farmerName": "Priya",
+    "farmerContactNumber": "4567890123",
+    "farmerEmail": "priya@gmail.com",
+    "farmerAddress": "P",
+    "paymentMethods": "Debit Card, Cash"
+  }
