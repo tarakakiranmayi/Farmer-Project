@@ -3,6 +3,7 @@ import { increment,decrement,incrementByAmount } from '../../Redux/slices/Counte
 import Carousel from 'react-bootstrap/Carousel';
 import { useSelector,useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
+
 function Home() {
   // const count = useSelector((state)=>state.counter.CounterValue)
   

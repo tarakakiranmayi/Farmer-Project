@@ -11,16 +11,23 @@ import { useSelector,useDispatch } from 'react-redux'
 import { FaRegHandPaper } from 'react-icons/fa';
 import { MdWavingHand } from 'react-icons/md';
 import { FaHome } from 'react-icons/fa';
+import { resetState } from '../../Redux/slices/UserFarmerLoginThunk';
 import Profile from '../profile/Profile';
+
 function Navbar1() {
   const [clicked, setClicked] = useState(false);
-  
+  const dispatch=useDispatch()
   const dropdownRef = useRef(null);
   const [showProfile, setShowProfile] = useState(false);
 
   const openProfile = () => setShowProfile(true);
   const closeProfile = () => setShowProfile(false);
+  function Logout()
+  {
+      dispatch(resetState())
+      console.log("done")
 
+  }
   let data=useSelector((state)=>state.userFarmer)
   console.log(data)
   function dropmenu() {
@@ -73,7 +80,8 @@ function Navbar1() {
                   <NavLink className="list-group-item list-group-item-action active" aria-current="page" to="#"></NavLink>
                   <NavLink className="list-group-item list-group-item-action" to="#">Features</NavLink>
                   <NavLink className="list-group-item list-group-item-action" to="#">Pricing</NavLink>
-                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="#">Disabled</NavLink>
+                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="#" onClick={Logout}>Log out</NavLink>
+
                  
                 </ul>
               </div>

@@ -6,6 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import {Provider} from 'react-redux'
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const script = document.createElement('script');
+script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+script.onload = () => {
+    console.log('Razorpay script loaded successfully');
+};
+script.onerror = () => {
+    console.error('Error loading Razorpay script');
+};
+document.body.appendChild(script);
 root.render(
   <React.StrictMode>
     <Provider store={store}>

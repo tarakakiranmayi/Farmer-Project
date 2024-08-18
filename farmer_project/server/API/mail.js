@@ -63,6 +63,62 @@ SupportFarmers.com
       })
 }))
 
+mail.post('/payment', eah(async (req, res) => {
+  console.log("called")
+   const { email, signature, order_id } = req.body; // Assuming `email` is provided in the request body
+  console.log(req.body,"hey this is mail")
+  
+  const user = await User.findOne({ email });
 
+  if (!user) {
+      return res.status(404).send({ message: 'User not found' });
+  }
+
+  // Configure the email transporter
+  const transporter = mailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+          user: "tarakakiranmayi@gmail.com",
+          pass: "ncqrrutuvrhchjfu" // Ensure this is kept secure
+      },
+  });
+
+  // Email options
+  const mailOptions = {
+      from: 'tarakakiranmayi@gmail.com',
+      to: user.email,
+      subject: 'Payment Confirmation from Support Farmers',
+      text: `
+          Dear ${user.name},
+
+          We have received your payment with order ID: ${order_id} and signature: ${signature}. Thank you for your purchase!
+
+          At Support Farmers, we are committed to connecting you with high-quality organic products and supporting local farmers. 
+
+          If you have any questions or need further assistance, please feel free to reach out.
+
+          Thank you for your support!
+
+          Warm regards,
+          T. Kiranmayi
+          CEO
+          Email: tarakakiranmayi@gmail.com
+          SupportFarmers.com
+      `
+  };
+
+  // Send email
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending email:', error);
+          return res.status(500).send({ message: 'Error sending email' });
+      } else {
+          console.log('Email sent:', info.response);
+          res.send({ message: 'Email sent successfully' });
+      }
+  });
+}));
 
   module.exports=mail

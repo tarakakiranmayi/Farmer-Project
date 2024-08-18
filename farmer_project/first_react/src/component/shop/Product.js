@@ -4,6 +4,9 @@ import { useLocation } from 'react-router-dom';
 import { FcPortraitMode, FcComments } from 'react-icons/fc';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import UserFarmerLoginThunk from '../../Redux/slices/UserFarmerLoginThunk';
+import { useSelector,useDispatch } from 'react-redux'
+import { AddProduct,RemoveProduct } from '../../Redux/slices/CartProduct';
 const Product = () => {
     const location=useLocation()
   const  id1=location.pathname.slice(9)
@@ -14,18 +17,22 @@ const Product = () => {
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
+  const dispatch=useDispatch()
 
   const handleRatingChange = (e) => {
     setRating(e.target.value);
   };
   let data1
+  let data=useSelector((state)=>state.userFarmer)
+  console.log(data)
   const handleSubmit = async(e) => {
     e.preventDefault();
     setSubmitted(true);
     // Here you would normally handle the submission (e.g., send to server)
     console.log('Comment:', comment);
     console.log('Rating:', rating);
-    const formData={'comment':comment,'rating':rating}
+  
+    const formData={'comment':[data.currentUser.name,comment],'rating':rating}
     data1=await axios.put(`http://localhost:3030/organicfarm/comments/${id1}`, formData,
       {
         headers: {
@@ -55,26 +62,30 @@ const Product = () => {
         <p>Price: ${productData.productPrice}</p>
         <p>Category: {productData.category}</p>
         <p>Description: {productData.description}</p>
-        <h3>Farmer Details</h3>
+        <h5>Farmer Details</h5>
         <p>Name: {productData.farmerName}</p>
         <p>Contact: {productData.farmerContactNumber}</p>
         <p>Email: {productData.farmerEmail}</p>
         <p>Address: {productData.farmerAddress}</p>
-        <p>Payment Methods: {productData.paymentMethods} <Link className='btn btn-success' to='/profile'>Buy</Link></p>
+        <p>Payment Methods: {productData.paymentMethods} <Link className='btn btn-success mx-2' to='/cart' onClick={()=>{
+          dispatch(AddProduct(productData))
+
+        }}>Add to card</Link></p>
       </div>
-      <h4 className='text-center'>Comments</h4>
-      
+     
+      <div className="product-details">
+      <h4 className='text-center m-4'>Comments</h4>
     { productData.comments && productData.comments.map((comment, index) => (
       <div key={index} className="bg-light p-3">
         <p
-          className="fs-4"
+          className="fs-7"
           style={{
             color: 'dodgerblue',
             textTransform: 'capitalize',
           }}
-        >
+        > <span className='text-success fs-5 m-3'> {comment[0]}</span>
           <FcPortraitMode className="fs-2 me-2" />
-          {comment} {/* Display the comment here */}
+          {comment[1]} {/* Display the comment here */}
         </p>
 
         <p
@@ -87,8 +98,9 @@ const Product = () => {
          
           
         </p>
+        <hr style={{width:"100%",textAlign:"left",marginLeft:"0"}}></hr>
       </div>
-    ))}
+    ))}</div>
   
       <div className="comment-section">
       {/* {productData.comments &&    <p>Comments{

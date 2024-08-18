@@ -74,7 +74,7 @@ const Profile = () => {
   return (
     <div className="profile-overlay" style={{ position: 'relative' }}>
       <div className="container" style={{ position: 'absolute', top: '150px', alignItems: 'center', justifyContent: 'center', maxWidth: '400px' }}>
-        <div className="card" style={{ backgroundColor: 'white', minWidth: '330px', margin: 'auto', display: 'block' }}>
+        <div className="card" style={{ backgroundColor: 'white', minWidth: '360px' }}>
           <div className="card-img">
             {!image && (
               <form onSubmit={handleSubmit}>

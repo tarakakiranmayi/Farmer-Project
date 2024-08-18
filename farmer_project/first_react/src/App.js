@@ -13,6 +13,7 @@ import Profile from './component/profile/Profile';
 import UploadForm from './component/shop/UploadForm';
 import Shop from './component/shop/Shop';
 import Product from './component/shop/Product';
+import Cart from './component/shop/Cart';
 function App() {
   let router=createBrowserRouter([
     {
@@ -35,6 +36,9 @@ function App() {
         {
           path:'Product/:_id',
           element:<Product />
+        },{
+          path:'cart',
+          element:<Cart/>
         }
        
       ]
