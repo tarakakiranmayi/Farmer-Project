@@ -9,7 +9,7 @@ const socket = io('http://localhost:3030', {
   transports: ['websocket', 'polling'], // Support WebSocket and polling
 });
 // socket.on('connect', () => {
-//   console.log('Connected to server');
+//   //console.log('Connected to server');
 // });
 
 function Chatroom() {
@@ -17,18 +17,18 @@ function Chatroom() {
   const [messages, setMessages] = useState([]); // State to hold the list of messages
   const location=useLocation()
    // This is your email from local storage
-//   console.log(location)
+//   //console.log(location)
   const recipientEmail = location.pathname.slice(6,)
   
   const user=useSelector((state)=>state.userFarmer)
   
   const userEmail=user.currentUser.email
-  console.log(userEmail,recipientEmail)
+  //console.log(userEmail,recipientEmail)
     useEffect(() => {
         // Join the chat with recipientId
         socket.on('connection', () => {
             
-            console.log('Connected to chatroom');
+            //console.log('Connected to chatroom');
             // You can now use socket.emit and socket.on to communicate
           });
         socket.emit('join', userEmail);
@@ -38,7 +38,7 @@ function Chatroom() {
                 
                 params: { receiver: recipientEmail,sender:userEmail },
               });
-              console.log(res)
+              //console.log(res)
               setMessages(res.data);
             } catch (err) {
               console.error(err);
@@ -51,7 +51,7 @@ function Chatroom() {
     
         // Listen for incoming messages
         socket.on('receiveMessage', (data) => {
-          console.log(data)
+          //console.log(data)
             if (data.sender === recipientEmail && data.recipient === userEmail) {
               setMessages((prevMessages) => [...prevMessages, data]);
               alert(`New message from ${data.sender}: ${data.message}`);

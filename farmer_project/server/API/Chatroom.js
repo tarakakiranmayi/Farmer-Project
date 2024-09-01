@@ -8,7 +8,7 @@ const io = new Server(server);
 
 const Chat=require('../ImageUploader/Chat')
 // io.on('connection', (socket) => {
-//     console.log('A user connected');
+//     //console.log('A user connected');
   
 //     // Handle incoming messages
 //     socket.on('sendMessage', async (data) => {
@@ -22,7 +22,7 @@ const Chat=require('../ImageUploader/Chat')
 //       socket.to(receiver).emit('receiveMessage', chatMessage);
 //     });
 //     socket.on('disconnect', () => {
-//         console.log('User disconnected');
+//         //console.log('User disconnected');
 //       });
 //       socket.on('join', async ({ userId, recipientId }) => {
 //         const chatHistory = await Chat.find({
@@ -62,12 +62,12 @@ const connectedUsers = {};
 
 // Socket.IO Connection
 // io.on('connection', (socket) => {
-//   console.log('A user connected');
+//   //console.log('A user connected');
 
 //   // Handle user joining
 //   socket.on('join', (email) => {
 //     connectedUsers[email] = socket.id;
-//     console.log(`${email} joined with socket ID: ${socket.id}`);
+//     //console.log(`${email} joined with socket ID: ${socket.id}`);
 //   });
 
 //   // Handle sending messages
@@ -95,7 +95,7 @@ const connectedUsers = {};
 //     // Remove user from connectedUsers
 //     for (const email in connectedUsers) {
 //       if (connectedUsers[email] === socket.id) {
-//         console.log(`${email} disconnected`);
+//         //console.log(`${email} disconnected`);
 //         delete connectedUsers[email];
 //         break;
 //       }
@@ -107,7 +107,7 @@ chatroomApp.get('/chat',async (req,res)=>{
 
   
     const { receiver,sender } = req.query;
-    console.log(receiver,sender)
+    //console.log(receiver,sender)
   
     try {
       const chatHistory = await Chat.find({

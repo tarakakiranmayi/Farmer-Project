@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredObj,thunkApi)=>{
     try{
-        console.log(userCredObj)
+        //////console.log(userCredObj)
         if(userCredObj!=null)
             {  
                   const res=await axios.post('http://localhost:3030/userapi/login',userCredObj, {
@@ -11,14 +11,14 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
                       'Content-Type': 'application/json',
                       // Include any other headers as needed
                     }})
-                    console.log(res)
+                    //////console.log(res)
                   if(res.data.message==='login successful'){
                     //use session storage for high security and also once we closed storage is deleted
                     //store in session storage and return data
                     
                 sessionStorage.setItem('Token', res.data.Token);
                 const userData = JSON.stringify(res.data.data);
-                // console.log(userData)
+                // //////console.log(userData)
                 localStorage.setItem('currentUser', userData);
                 localStorage.setItem('loginStatus', 'true');
                
@@ -68,7 +68,7 @@ export const UserFarmer=createSlice(
                 state.isPending=true
             })
             .addCase(userfarmerThunk.fulfilled,(state,action)=>{
-                console.log(action)
+                //////console.log(action)
                 state.isPending=false
                 state.errorOccured=false
                 state.loginStatus=true

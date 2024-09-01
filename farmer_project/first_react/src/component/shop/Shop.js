@@ -11,7 +11,7 @@ function Shop() {
       .then(res => res.json())
       .then(data => {
         setUser(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch(err => console.log(err));
   }, []);
@@ -20,7 +20,7 @@ function Shop() {
     let searchTerm = e.target.value;
     let filteredItems = user.filter((item) => item.productName.includes(searchTerm));
     setFilter(filteredItems);
-    console.log(filteredItems);
+    //console.log(filteredItems);
   }
 
   return (

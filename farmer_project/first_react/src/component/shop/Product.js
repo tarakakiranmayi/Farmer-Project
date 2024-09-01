@@ -24,13 +24,13 @@ const Product = () => {
   };
   let data1
   let data=useSelector((state)=>state.userFarmer)
-  console.log(data)
+  //console.log(data)
   const handleSubmit = async(e) => {
     e.preventDefault();
     setSubmitted(true);
     // Here you would normally handle the submission (e.g., send to server)
-    console.log('Comment:', comment);
-    console.log('Rating:', rating);
+    //console.log('Comment:', comment);
+    //console.log('Rating:', rating);
   
     const formData={'comment':[data.currentUser.name,comment],'rating':rating}
     data1=await axios.put(`http://localhost:3030/organicfarm/comments/${id1}`, formData,
@@ -39,13 +39,13 @@ const Product = () => {
           'Content-Type': 'application/json',
         },
       })
-   console.log(data1)
+   //console.log(data1)
   };
   useEffect(()=>{
    
     async function get(id) {
       const data=await axios.get(`http://localhost:3030/organicfarm/product/${id}`)
-      console.log(data.data)
+      //console.log(data.data)
       setproduct(data.data)
     }
     const  id=location.pathname.slice(9)

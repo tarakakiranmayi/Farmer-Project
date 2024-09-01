@@ -25,14 +25,14 @@ function Navbar1() {
   function Logout()
   {
       dispatch(resetState())
-      console.log("done")
+      //console.log("done")
 
   }
   let data=useSelector((state)=>state.userFarmer)
-  console.log(data)
+  //console.log(data)
   function dropmenu() {
     setClicked(true);
-    console.log("yes")
+    //console.log("yes")
   }
 
   function offdropmenu() {

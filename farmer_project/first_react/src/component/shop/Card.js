@@ -5,7 +5,7 @@ function Card(props) {
   let navigate = useNavigate();
 
   function goToUser() {
-    console.log(props.data)
+    //console.log(props.data)
     
     navigate(`/Product/${props.data._id}`)
   }

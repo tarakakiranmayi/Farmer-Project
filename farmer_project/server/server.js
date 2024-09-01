@@ -66,18 +66,18 @@ app.use('/chatroom',chatroom)
 
 const connectedUsers = {};
 io.on('connection', (socket) => {
-  console.log('A user connected');
+//   console.log('A user connected');
 
   // Handle user joining
   socket.on('join', (email) => {
     connectedUsers[email] = socket.id;
-    console.log(`${email} joined with socket ID: ${socket.id}`);
+    // console.log(`${email} joined with socket ID: ${socket.id}`);
   });
 
   // Handle sending messages
   socket.on('sendMessage', async (data) => {
     const { sender, receiver, message } = data;
-  console.log(data)
+//   console.log(data)
     // Save message to the database
     const chatMessage = new Chat({
       sender,
@@ -89,8 +89,8 @@ io.on('connection', (socket) => {
 
     // Emit the message to the receiver if online
     const receiverSocketId = connectedUsers[receiver];
-    console.log(connectedUsers)
-    console.log(receiverSocketId)
+    // console.log(connectedUsers)
+    // console.log(receiverSocketId)
     if (receiverSocketId) {
       io.to(receiverSocketId).emit('receiveMessage', chatMessage);
     }
@@ -101,9 +101,9 @@ io.on('connection', (socket) => {
     // Remove user from connectedUsers
     for (const email in connectedUsers) {
       if (connectedUsers[email] === socket.id) {
-        console.log(`${email} disconnected`);
+        // console.log(`${email} disconnected`);
         delete connectedUsers[email];
-        console.log('Updated connected users:', connectedUsers);
+        // console.log('Updated connected users:', connectedUsers);
         break;
       }
     }
