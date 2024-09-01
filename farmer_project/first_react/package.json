@@ -17,6 +17,7 @@
     "razorpay": "^2.9.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.3",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-form-hook": "^0.0.1",
     "react-hook-form": "^7.52.0",

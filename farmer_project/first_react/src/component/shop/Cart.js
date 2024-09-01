@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Cart.css';
-
+import Confetti from 'react-confetti';
+import { useNavigate } from 'react-router-dom';
 function Cart() {
     const [products, setProducts] = useState([]);
     const [orderId, setOrderId] = useState('');
-
+    const [showConfetti, setShowConfetti] = useState(false);
+   const navi=useNavigate()
     // Retrieve products from Redux store
     let res = useSelector((state) => state.product);
     let data=useSelector((state)=>state.userFarmer)
-    console.log(data)
+    // //(data)
     useEffect(() => {
         if (res) {
             setProducts(res.ProductCount);
@@ -22,7 +24,7 @@ function Cart() {
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
         script.onload = () => {
-            console.log('Razorpay script loaded successfully');
+            //('Razorpay script loaded successfully');
         };
         script.onerror = () => {
             console.error('Error loading Razorpay script');
@@ -34,8 +36,9 @@ function Cart() {
             document.body.removeChild(script);
         };
     }, []);
-
+   
     const pay = async () => {
+        // setShowConfetti(true);
         try {
             // Calculate the total price
             const totalPrice = products.reduce((sum, product) => sum + product.productPrice, 0);
@@ -52,7 +55,7 @@ function Cart() {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log(response.data)
+            // //(response.data)
 
             const order_id  = response.data.id;
             setOrderId(order_id);
@@ -64,31 +67,38 @@ function Cart() {
                 image: "https://example.com/your_logo",
                 order_id: order_id,
                 handler: async function (response) {
-                    console.log(response);
+                    //(response);
                     // response.user=data.currentUser
                     const res=await axios.post('http://localhost:3030/payment/is-order-completed',response)
-                    console.log(res)
+                    // //(res)
                     const postData = {
                       signature: response.razorpay_signature,
                       order_id: order_id,
                       email: data.currentUser.email // Ensure data.currentUser is defined and accessible
                   };
-                  
+                      setShowConfetti(true);
+                     
+                     
+
                      axios.post('http://localhost:3030/postMail/payment',postData)
                     
                   .then((res) => {
-                      console.log('Signature sent to /mail:', res.data);
+                      //('Signature sent to /mail:', res.data);
+                      
                   })
                   .catch((error) => {
                       console.error('Error sending signature:', error);
                   });
-                    axios.post('http://localhost:3030/payment/verify', response)
-                        .then((res) => {
-                            console.log('Payment successful:', res.data);
-                        })
-                        .catch((error) => {
-                            console.error('Error verifying payment:', error);
-                        });
+                  setTimeout(() => {setShowConfetti(false);  navi('/')}, 8000);
+                 
+                  
+                    // axios.post('http://localhost:3030/payment/verify', response)
+                //     .then((res) => {
+                    //         //('Payment successful:', res.data);
+                    //     })
+                    //     .catch((error) => {
+                    //         console.error('Error verifying payment:', error);
+                    //     });
                 },
                 theme: {
                     color: "#3399cc"
@@ -105,22 +115,32 @@ function Cart() {
     };
 
     return (
-        <div className='m-1' style={{ backgroundColor: 'greenyellow' }}>
-            <div>
+        <>
+        {showConfetti==true ? <><Confetti /> 
+         <div className="message">
+         <h1>Thanks for buying our product!</h1>
+         <p>Your order will be delivered soon.</p>
+       </div></>
+        :
+        <div className='m-1' style={{ backgroundColor: 'cyan' }}>
+            <div className='text-center p-3 m-3'>
                 Shopping bag
             </div>
             <div className="cart-container">
                 {products.map((product) => (
-                    <div key={product._id} className="cart-item d-flex w-100 h-75" style={{ justifyContent: 'space-around' }}>
+                    <div key={product._id} className="cart-item d-flex w-100 h-100" style={{ justifyContent: 'space-around' }}>
                         <img src={product.image} height='50' width='50' alt={product.productName} />
                         <h2>{product.productName}</h2>
                         <p>Price: ₹{product.productPrice}</p>
                         <p>Total: ₹{product.productPrice}</p>
                     </div>
                 ))}
+                 <button className='btn-success btn d-block mx-auto w-25 m-3 p-3' onClick={pay}>Pay</button>
             </div>
-            <button className='btn-success btn d-block mx-auto w-25 m-4 p-3 mb-1' onClick={pay}>Pay</button>
-        </div>
+           
+           
+        </div>}
+        </>
     );
 }
 

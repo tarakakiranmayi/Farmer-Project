@@ -57,17 +57,27 @@ const Product = () => {
   return (
     <div className="container">
       <div className="product-details">
-        <img src={productData.image} alt={productData.productName} />
-        <h2>{productData.productName}</h2>
+        <img className='d-block mx-auto' src={productData.image} alt={productData.productName} />
+        
+        <div className='d-flex' style={{justifyContent:'space-around'}}>
+        <div>
+        <h5>{productData.productName}</h5>
         <p>Price: ${productData.productPrice}</p>
         <p>Category: {productData.category}</p>
         <p>Description: {productData.description}</p>
-        <h5>Farmer Details</h5>
+        <p>Payment Methods: {productData.paymentMethods}</p>
+        </div>
+       <div>
+       <h5>Farmer Details</h5>
         <p>Name: {productData.farmerName}</p>
         <p>Contact: {productData.farmerContactNumber}</p>
         <p>Email: {productData.farmerEmail}</p>
         <p>Address: {productData.farmerAddress}</p>
-        <p>Payment Methods: {productData.paymentMethods} <Link className='btn btn-success mx-2' to='/cart' onClick={()=>{
+       
+        
+       </div>
+       </div>
+        <p className='text-center'> <Link className='btn btn-success mx-2' to='/cart' onClick={()=>{
           dispatch(AddProduct(productData))
 
         }}>Add to card</Link></p>
@@ -111,7 +121,7 @@ const Product = () => {
 ))}
 </div>
 }</p>} */}
-        <h3>Leave a Comment and Rating</h3>
+        <h3 className='text-center'>Leave a Comment and Rating</h3>
      
 
         {submitted ? (
@@ -141,7 +151,7 @@ const Product = () => {
                 <option value="5">5 - Excellent</option>
               </select>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className='mx-auto d-block'>Submit</button>
           </form>
         )}
       </div>

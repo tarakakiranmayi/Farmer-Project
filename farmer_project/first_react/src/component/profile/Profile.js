@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const Profile = () => {
   let data = useSelector((state) => state.userFarmer);
-  console.log(data);
+  //(data);
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({});
@@ -31,7 +31,7 @@ const Profile = () => {
         try {
           let res = await axios.get(`http://localhost:3030/userapi/user/${data.currentUser._id}`);
           const base64Image = res.data.photo;
-          console.log(base64Image)
+          //(base64Image)
           setImageData(`data:image/jpeg;base64,${base64Image}`);
           setImage(true);
         } catch (error) {

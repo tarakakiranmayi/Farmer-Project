@@ -11,10 +11,10 @@ function Navbar() {
    
   let [clicked,setclicked]=useState(false)
   let data=useSelector((state)=>state.userFarmer)
-  console.log(data)
+  //(data)
   function profileDisplay()
   {
-    // console.log(currentUser,loginStatus)
+    // //(currentUser,loginStatus)
   }
   function dropmenu()
   {
@@ -22,13 +22,13 @@ function Navbar() {
   }
   const handleTouchStart = (e) => {
     // Prevent the default touch behavior to avoid conflicts
-   console.log("yes")
+   //("yes")
   };
   function offdropmenu()
-  { console.log("why now")
+  { //("why now")
     setclicked(false)
   }
-  // console.log(clicked)
+  // //(clicked)
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">

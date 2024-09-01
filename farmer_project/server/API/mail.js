@@ -9,7 +9,7 @@ mail.use((req,res,next)=>{
 })
 const User=require('../ImageUploader/UserImage')
 mail.get('/:email',eah(async(req,res)=>{
-    console.log(req.params)
+    // console.log(req.params)
     const email=req.params
     
      const user=await User.findOne({'email':email.email})
@@ -64,7 +64,7 @@ SupportFarmers.com
 }))
 
 mail.post('/payment', eah(async (req, res) => {
-  console.log("called")
+//   console.log("called")
    const { email, signature, order_id } = req.body; // Assuming `email` is provided in the request body
   console.log(req.body,"hey this is mail")
   

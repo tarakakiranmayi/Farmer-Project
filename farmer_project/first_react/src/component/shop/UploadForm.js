@@ -42,7 +42,7 @@ const UploadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    //(formData)
     try {
     
       const response = await axios.post(

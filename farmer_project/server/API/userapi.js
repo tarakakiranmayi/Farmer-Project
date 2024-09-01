@@ -45,14 +45,14 @@ Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
     try {
         // Multer saves the file as req.file.buffer
         const { name,password,email, phoneNo, address } = req.body;
-        console.log(req.body)
+        //(req.body)
         let imageData
         if (req.body.imageData!=null )
-        { console.log("here")
+        { //("here")
             imageData = req.file.buffer; 
         }
         else{
-            console.log("else here")
+            //("else here")
              imageData=""
         }
         
@@ -101,7 +101,7 @@ Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
 })
 
 Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
-    console.log("called")
+    //("called")
     try {
       const email = req.params.email;
       const newupdate=req.body
@@ -113,7 +113,7 @@ Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
         address: dbuser.address,
         last_updated: new Date()
       };
-      console.log(updateData)
+      //(updateData)
   
       if (req.file) {
         updateData.photo = req.file.buffer;
@@ -142,7 +142,7 @@ Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
 
 Userapp.get('/user/:_id',async(req,res)=>{
     const dbuser=await User.findOne({_id:req.params._id})
-    console.log(dbuser)
+    //(dbuser)
     const buffer = Buffer.from(dbuser.photo);
 
     // Convert the buffer to a base64 string

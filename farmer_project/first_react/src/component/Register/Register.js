@@ -16,7 +16,7 @@ function Register() {
     }
     async function handleFormSubmit(obj)
     { 
-        console.log(obj)
+        //(obj)
         if(obj.userType!=null)
     {
          res= await axios.post(' http://localhost:3030/userapi/NewUser',obj, {
@@ -24,13 +24,13 @@ function Register() {
               'Content-Type': 'application/json',
               // Include any other headers as needed
             }})
-            console.log(res.data)
+            //(res.data)
             if(res.data.message==='User profile uploaded successfully')
                 {
                     async function mail(){
                         let result= await axios.get(`http://localhost:3030/postMail/${obj.email}`)
-                      console.log(result)
-                      console.log(obj.email)
+                      //(result)
+                      //(obj.email)
                 }
                          mail()
                     navigator('/Login')

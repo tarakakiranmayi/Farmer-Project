@@ -28,7 +28,8 @@ const productSchema = new Schema({
   farmerAddress:{type:String,required:true},
   
       rate: { type: Array },
-      comments: { type: Array }
+      comments: { type: Array },
+      averageRating:{type:Number }
     ,
   // manufactureDate: {
   //   type: Date,

@@ -14,16 +14,16 @@ function Login() {
     let [err,setErr]=useState('')
     let dispatch=useDispatch()
     let data=useSelector((state)=>state.userFarmer)
-    console.log(data)
+    //(data)
     async function handleFormSubmit(obj)
     {   
-        console.log(obj)
+        //(obj)
         // let res= await axios.post(' http://localhost:3030/userapi/login',obj, {
         //     headers: {
         //       'Content-Type': 'application/json',
         //       // Include any other headers as needed
         //     }})
-        //     console.log(res.data)
+        //     //(res.data)
         //     if(res.data.message==='login successful')
         //         {
         //             navigate('/')
@@ -32,11 +32,11 @@ function Login() {
         //              setErr(res.data.message)
         //         }
         dispatch(userfarmerThunk(obj))
-        console.log(data)
+        //(data)
       
           
     }
-  console.log(data)
+  //(data)
   if(data.loginStatus==true){
     navigate('/')
   }

@@ -9,7 +9,7 @@ organicApp.use((req,res,next)=>{
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 // organicApp.post('/product',eah((async(req,res)=>{
-//     console.log(req.body)
+//     //(req.body)
 // })))
 // organicApp.get('/products',eah(async(req,res)=>{
 
@@ -29,7 +29,7 @@ const upload = multer({ storage });
 // Route to handle product image upload
 organicApp.post('/productUpload',  async (req, res) => {
   try{ const productId = new Date();
-    console.log(req.body)
+    //(req.body)
     const {
       image,
       productName,
@@ -123,9 +123,11 @@ organicApp.put('/comments/:id', eah(async (req, res) => {
       product.rate.push(rating);
 
       // Calculate the new average rating
-      const totalRatings = product.rate.reduce((sum, rate) => sum + rate, 0);
-      const averageRating = totalRatings / product.rate.length;
-
+      const totalRatings = product.rate.reduce((sum, rate) => {return sum + Number(rate)}, 0);
+      //(totalRatings)
+      const averageRating1 = totalRatings / product.rate.length;
+      const averageRating=Math.round(averageRating1)
+      //(averageRating)
       // Update the product in the database
       const updatedProduct = await Product.findOneAndUpdate(
           { _id: objectId },

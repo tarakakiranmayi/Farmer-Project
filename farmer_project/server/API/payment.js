@@ -28,13 +28,14 @@ payment.post('/is-order-completed',(req,res)=>{
     razorpay.payments.fetch(req.body.razorpay_payment_id ).then((paymentdocument)=>{
         if (paymentdocument.status=='captured')
             {
-                res.send("good well done")
+                res.send("payment done")
             }
         else{
-            console.log("here")
+            //("here")
             res.send("error")
         }
     })
 
 })
+
 module.exports=payment

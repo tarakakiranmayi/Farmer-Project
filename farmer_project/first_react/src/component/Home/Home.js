@@ -8,9 +8,9 @@ function Home() {
   // const count = useSelector((state)=>state.counter.CounterValue)
   
   // const dispatch=useDispatch()
-  // console.log(count)
+  // //(count)
   const data=useSelector((state)=>state.userFarmer)
-  console.log(data)
+  //(data)
   return (
     <>
           <Carousel className='m-3 p-3' style={{minWidth:'350px',minHeight:"350px"}}>
