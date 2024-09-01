@@ -14,6 +14,8 @@ import UploadForm from './component/shop/UploadForm';
 import Shop from './component/shop/Shop';
 import Product from './component/shop/Product';
 import Cart from './component/shop/Cart';
+import StartPage from './component/Farmers/StartPage';
+import Chatroom from './component/Chatroom/Chatroom';
 function App() {
   let router=createBrowserRouter([
     {
@@ -39,6 +41,14 @@ function App() {
         },{
           path:'cart',
           element:<Cart/>
+        },
+        {
+          path:'startpage',
+          element:<StartPage/>
+        },
+        {
+          path:'chat/:recipetEmail',
+          element:<Chatroom/>
         }
        
       ]

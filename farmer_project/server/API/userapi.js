@@ -40,6 +40,13 @@ const multer = require('multer');
 const storage = multer.memoryStorage(); // Store files in memory as Buffer
 const upload = multer({ storage });
 
+
+Userapp.get('/users',async(req,res)=>{
+  const userData=await User.find({})
+  // //(userData)
+ 
+  res.send(userData)
+})
 // Route to handle product image upload
 Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
     try {
