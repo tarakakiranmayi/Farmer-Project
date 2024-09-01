@@ -61,7 +61,6 @@ function Chatroom() {
     
         // Cleanup on unmount
         return () => {
-           
             socket.off('receiveMessage');
         };
       }, [userEmail, recipientEmail]);
@@ -73,7 +72,8 @@ function Chatroom() {
             receiver: recipientEmail,
             message,
           });
-          setMessages((prevMessages) => [...prevMessages, { ...message, timestamp: new Date() }]);
+          setMessages((prevMessages) => [...prevMessages, { sender: userEmail, message, timestamp: new Date() }]);
+          // alert(` message sent   `);
           setMessage(''); // Clear the input field
         }
       };
