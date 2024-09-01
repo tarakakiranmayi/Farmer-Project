@@ -48,7 +48,29 @@ function Login() {
     <div className='main w-50 border-5 mx-auto border-dark shadow-lg my-5 p-3'>
        <h2 className='text-center m-2'>Login</h2>
        <form onSubmit={handleSubmit(handleFormSubmit)}>
-     
+       <div className='mb-3 row mx-1 form-check d-flex mb-1'>
+    <div className='col lg-col-6'>
+        <input
+            type="radio"
+            name="userType"
+            value="user"
+            className='form-check-input'
+            {...register("userType", { required: true })}
+        />
+        <label htmlFor="user" className='form-label'>User</label>
+    </div>
+    <div className='col lg-col-6'>
+        <input
+            type="radio"
+            name="userType"
+            value="farmer"
+            className='form-check-input'
+            {...register("userType", { required: true })}
+        />
+        <label htmlFor="farmer" className='form-label'>Farmer</label>
+    </div>
+   
+</div>
 {errors.userType && <p className='lead fs-4 text-danger'>Please select a user type</p>}
 
         <div className=''>

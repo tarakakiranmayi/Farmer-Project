@@ -45,7 +45,7 @@ app.set('organicfarm',organicfarm)
 app.use(exp.json())
 
 const Userapp=require('./API/userapi')
-const farmerapi=require('./API/farmersapi')
+const farmersapi=require('./API/farmersapi')
 const houseApp=require('./API/householdfarm')
 const organicApp=require('./API/organicfarm')
 const contractors=require('./API/contractors')
@@ -55,7 +55,7 @@ const chatroom=require('./API/Chatroom')
 
 
 app.use('/userapi',Userapp)
-app.use('/farmersapi',farmerapi)
+app.use('/farmersapi',farmersapi)
 app.use('/householdfarm',houseApp)
 app.use('/contract',contractors)
 app.use('/organicfarm',organicApp)

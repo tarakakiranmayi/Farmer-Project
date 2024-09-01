@@ -1,5 +1,6 @@
 // models/Product.js
 const mongoose = require('mongoose');
+const farmerapp = require('../API/farmersapi');
 require('dotenv').config()
 const port=process.env.port || 5001
 const mongo_url=process.env.mongo_url
@@ -13,27 +14,28 @@ const Schema = mongoose.Schema;
 
 const FarmerSchema = new Schema({
     // Essential Information
-    name: { type: String, required: true },
-    contact_number: { type: String, required: true },
-    description: { type: String, required: true },
-    status: { type: Boolean, required: true },
-    price: { type: Number, required: true },
-    area: { type: String, required: true },
-    skills: [{ type: String, required: true }],
-    rating: { type: Number, required: true },
+    name: { type: String, required:true },
+    contact_number: { type: String,required:true  },
+    description: { type: String,required:true  },
+  
+    pricePerHour: { type: Number,required:true  },
+    area: { type: String,required:true },
+    skills: [{ type: String,  }],
+    rating: { type: Number,  },
     reviews: [
       {
-        user: { type: String, required: true },
-        rating: { type: Number, required: true },
-        review: { type: String, required: true },
-        date: { type: Date, required: true }
+        user: { type: String,  },
+        rating: { type: Number,  },
+        review: { type: String,  },
+        date: { type: Date,  }
       }
     ],
   
     // Optional Information
-    email: { type: String },
-    address: { type: String },
-    photo: { type: String },
+    email: { type: String ,required:true},
+    password: { type: String ,required:true},
+    address: { type: String,required:true },
+    photo: { type:  Buffer },
     experience: { type: String },
     education: { type: String },
     work_hours_per_day: { type: Number },
@@ -42,20 +44,15 @@ const FarmerSchema = new Schema({
     tools_and_equipment: [{ type: String }],
     payment_methods: [{ type: String }],
     average_response_time: { type: String },
-    total_jobs_completed: { type: Number },
-    successful_jobs: { type: Number },
-    failed_jobs: { type: Number },
-    certifications: [{ type: String }],
+    total_jobs_contracts: { type: Number },
+    
+    
     join_date: { type: Date },
     last_updated: { type: Date },
-    comments: [
-      {
-        user: { type: String },
-        comment: { type: String },
-        date: { type: Date }
-      }
-    ]
+    
   });
+  
+
   
   const Farmer = mongoose.model('Farmer', FarmerSchema);
   

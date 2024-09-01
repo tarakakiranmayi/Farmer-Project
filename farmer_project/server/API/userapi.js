@@ -45,7 +45,7 @@ Userapp.get('/users',async(req,res)=>{
   const userData=await User.find({})
   // //(userData)
  
-  res.send(userData)
+  res.send(userData)i
 })
 // Route to handle product image upload
 Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
@@ -82,7 +82,7 @@ Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
                 contact_number: phoneNo,
                 email: email,
                 address: address,
-              
+                
                 
                 join_date: new Date(),
                 last_updated: new Date(),

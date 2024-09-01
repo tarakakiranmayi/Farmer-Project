@@ -5,8 +5,9 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
     try{
         //////console.log(userCredObj)
         if(userCredObj!=null)
-            {  
-                  const res=await axios.post('http://localhost:3030/userapi/login',userCredObj, {
+            { 
+                   if(userCredObj.userType=='User'){
+                const res=await axios.post('http://localhost:3030/userapi/login',userCredObj, {
                     headers: {
                       'Content-Type': 'application/json',
                       // Include any other headers as needed
@@ -21,12 +22,43 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
                 // //////console.log(userData)
                 localStorage.setItem('currentUser', userData);
                 localStorage.setItem('loginStatus', 'true');
+            }
+            else{
+                return thunkApi.rejectWithValue(res.data.message)
+              }
+              return res.data.data
                
                   }
                   else{
+                    const res=await axios.post('http://localhost:3030/farmersapi/login',userCredObj, {
+                        headers: {
+                          'Content-Type': 'application/json',
+                          // Include any other headers as needed
+                        }})
+                        //////console.log(res)
+                      if(res.data.message==='login successful'){
+                        //use session storage for high security and also once we closed storage is deleted
+                        //store in session storage and return data
+                        
+                    sessionStorage.setItem('Token', res.data.Token);
+                    const userData = JSON.stringify(res.data.data);
+                    // //////console.log(userData)
+                    localStorage.setItem('currentUser', userData);
+                    localStorage.setItem('loginStatus', 'true');
+                }
+                else{
                     return thunkApi.rejectWithValue(res.data.message)
                   }
-                return res.data.data
+                  return res.data.data
+
+
+                  }
+                 
+                 
+                //   else{
+                //     return thunkApi.rejectWithValue(res.data.message)
+                //   }
+               
                 
             }
           
