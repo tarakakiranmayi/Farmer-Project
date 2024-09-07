@@ -77,7 +77,7 @@ const Product = () => {
         
        </div>
        </div>
-        <p className='text-center'> <Link className='btn btn-success mx-2' to='/cart' onClick={()=>{
+        <p className='text-center m-1'> <Link className='btn btn-success mx-1 mt-1' to='/cart' onClick={()=>{
           dispatch(AddProduct(productData))
 
         }}>Add to card</Link></p>

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MdWavingHand } from 'react-icons/md';
 import { FaHome } from 'react-icons/fa';
 import { resetState } from '../../Redux/slices/UserFarmerLoginThunk';
-
+import { useNavigate } from 'react-router-dom';
 import Profile from '../profile/Profile';
 import '../Navbar/Navbar1.css';
 
@@ -16,12 +16,14 @@ function Navbar1() {
   const dispatch = useDispatch();
   const [showProfile, setShowProfile] = useState(false);
   const data = useSelector((state) => state.userFarmer);
-  
+  const nav=useNavigate()
   function Logout() {
-    // dispatch(resetState());
+    
     sessionStorage.clear()
     localStorage.clear()
-    window.location.reload()
+    dispatch(resetState());
+    // window.location.reload()
+    nav('/Login')
   }
 
   return (
@@ -42,9 +44,9 @@ function Navbar1() {
               <div  className={`d-flex justify-content-end dropmenu ${clicked ? 'show':'hide'}`}>
                 <ul className="dropdown-container list-group w-25" style={{ maxWidth: "150px" }}>
                
-                  <NavLink className="list-group-item " to="#"><span className='text-black '>Features</span></NavLink>
-                  <NavLink className="list-group-item list-group-item-action" to="#"><span className='text-black'>Prices</span></NavLink>
-                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="#" onClick={Logout}><span className='text-black'>Logout</span></NavLink>
+                  <NavLink className="list-group-item " to="/startpage"><span className='text-black '>Chat Room</span></NavLink>
+                  <NavLink className="list-group-item list-group-item-action" to="/shop"><span className='text-black'>Organic Shop</span></NavLink>
+                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="/Login" onClick={Logout}><span className='text-black'>Logout</span></NavLink>
                 </ul>
               </div>
             

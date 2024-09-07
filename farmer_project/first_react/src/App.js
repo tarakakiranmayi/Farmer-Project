@@ -17,6 +17,7 @@ import Cart from './component/shop/Cart';
 import StartPage from './component/Farmers/StartPage';
 import Chatroom from './component/Chatroom/Chatroom';
 import RegisterPage from './component/Register/RegisterPage';
+import CultivateLandForm from './component/Land/CultivateLandFrom';
 function App() {
   let router=createBrowserRouter([
     {
@@ -50,6 +51,10 @@ function App() {
         {
           path:'chat/:recipetEmail',
           element:<Chatroom/>
+        },
+        {
+          path:'contractLand',
+          element:<CultivateLandForm/>
         }
        
       ]

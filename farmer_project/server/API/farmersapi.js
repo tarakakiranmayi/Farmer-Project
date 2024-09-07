@@ -14,21 +14,33 @@ const multer = require('multer');
 // Define storage for multer
 const storage = multer.memoryStorage(); // Store files in memory as Buffer
 const upload = multer({ storage });
+farmersapp.get('/users',async(req,res)=>{
+  const userData=await Farmer.find({})
+  // //(userData)
+// console.log(userData)
+  res.send(userData)
+})
 farmersapp.post('/login',eah(async(req,res)=>{
   console.log("called me login")
   const user=req.body
   const dbuser=await Farmer.findOne({'email':user.email})
-  console.log(dbuser)
+  // console.log(dbuser)
   if(dbuser!=null)
-      {
+      { 
           const status = await bcrypt.compare(user.password,dbuser.password)
           if(status==true)
               {
                   const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_CODE,{expiresIn:300000})
+                  dbuser.online=true
+                  await Farmer.findOneAndUpdate(dbuser._id,dbuser,{new:true})
+                  dbuser.photo=null
+                 
+               
+
                   res.send({message:"login successful",Token:signedToken,data:dbuser})
               }
               else{
-                  res.send({'message':"Invalid password"})
+                  res.send({message:"Invalid password"})
               }
 
       }

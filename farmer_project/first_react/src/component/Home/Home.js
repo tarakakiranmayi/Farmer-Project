@@ -105,7 +105,7 @@ function Home() {
           <h5 className='card-title mb-3'>List Your Land for Cultivation</h5>
         <p className="card-text ">Have land available for cultivation? Share the details with our network of farmers </p>
         <div className='card-footer'>
-          <Link to="/" className='btn btn-success mx-auto d-block w-50'>Explore</Link>
+          <Link to="/contractLand" className='btn btn-success mx-auto d-block w-50'>Explore</Link>
         </div>
         </div>
         </div>
@@ -120,7 +120,7 @@ function Home() {
           <h5 className='card-title mb-3'>Connect with a Farmer</h5>
         <p className="card-text ">Connect with local farmers passionate about organic farming.</p>
         <div className='card-footer'>
-          <Link to="/" className='btn btn-success mx-auto d-block w-50'>Explore</Link>
+          <Link to="/startpage" className='btn btn-success mx-auto d-block w-50'>Explore</Link>
         </div>
         </div>
         </div>

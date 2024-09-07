@@ -37,7 +37,7 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
                           'Content-Type': 'application/json',
                           // Include any other headers as needed
                         }})
-                        //////console.log(res)
+                        console.log(res)
                       if(res.data.message==='login successful'){
                         //use session storage for high security and also once we closed storage is deleted
                         //store in session storage and return data
@@ -45,7 +45,9 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
                     sessionStorage.setItem('Token', res.data.Token);
                     const userData = JSON.stringify(res.data.data);
                     // //////console.log(userData)
+                    console.log(userData)
                     localStorage.setItem('currentUser', userData);
+                    console.log(localStorage.getItem('currentUser'))
                     localStorage.setItem('loginStatus', 'true');
                 }
                 else{
@@ -95,6 +97,7 @@ export const UserFarmer=createSlice(
             localStorage.removeItem('loginStatus');
             sessionStorage.removeItem('Token');
             }
+            
         },
         extraReducers:(builder)=>{
             builder

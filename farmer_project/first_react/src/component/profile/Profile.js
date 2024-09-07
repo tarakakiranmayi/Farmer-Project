@@ -78,6 +78,11 @@ const Profile = () => {
     }
   );
   console.log(response)
+  if (response.data.message === 'User profile updated successfully' && response.data.user.photo) {
+    const base64Image = response.data.image;
+    setImageData(`data:image/jpeg;base64,${base64Image}`);
+    setImage(true);
+  }
 }
 else{
   console.log("why me..")
@@ -91,14 +96,15 @@ else{
     }
   );
   console.log(response)
+  if (response.data.message === 'User profile updated successfully' && response.data.user.photo) {
+    const base64Image = response.data.image;
+    setImageData(`data:image/jpeg;base64,${base64Image}`);
+    setImage(true);
+  }
 }
     
      
-      if (response.data.message === 'User profile updated successfully' && response.data.user.photo) {
-        const base64Image = response.data.image;
-        setImageData(`data:image/jpeg;base64,${base64Image}`);
-        setImage(true);
-      }
+      
     } catch (error) {
       console.error('Error uploading product image:', error);
     }

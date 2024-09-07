@@ -42,15 +42,18 @@ function Login() {
           
     }
   //(data)
-  if(data.loginStatus==true){
-    // navigate('/')
-    setTimeout(() => {
-        // After processing, navigate to the home page
+  useEffect(()=>{
+    if(data.loginStatus==true){
+        // navigate('/')
+        setTimeout(() => {
+            // After processing, navigate to the home page
+            
+            navigate('/');
+          }, 2000); // Adjust the delay as necessary (e.g., 2000ms = 2 seconds)
         
-        navigate('/');
-      }, 2000); // Adjust the delay as necessary (e.g., 2000ms = 2 seconds)
-    
-  }
+      }
+  },[data.loginStatus])
+ 
  
 
 
