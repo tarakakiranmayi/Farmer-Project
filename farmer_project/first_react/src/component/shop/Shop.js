@@ -25,7 +25,7 @@ function Shop() {
 
   return (
     <div style={{ padding: "0px", margin: "0px" }}>
-      <div className='w-50 text-center d-block mx-auto m-5'>
+      <div className='w-100 text-center d-flex ' style={{alignItems:'center',justifyContent:'center'}}>
         <input
           type="text"
           id="search"

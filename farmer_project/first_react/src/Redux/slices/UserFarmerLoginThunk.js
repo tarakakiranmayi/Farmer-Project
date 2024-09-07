@@ -5,8 +5,9 @@ export const userfarmerThunk=createAsyncThunk('userFarmerThunk',async(userCredOb
     try{
         //////console.log(userCredObj)
         if(userCredObj!=null)
-            { 
-                   if(userCredObj.userType=='User'){
+            {  console.log(userCredObj)
+                   if(userCredObj.userType=='user'){
+                    console.log("here.....")
                 const res=await axios.post('http://localhost:3030/userapi/login',userCredObj, {
                     headers: {
                       'Content-Type': 'application/json',

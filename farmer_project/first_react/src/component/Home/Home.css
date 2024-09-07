@@ -1,0 +1,5 @@
+/* Hide carousel controls */
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+  display: none;
+}

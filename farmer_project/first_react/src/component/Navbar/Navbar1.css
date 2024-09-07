@@ -39,11 +39,15 @@
     float: right;
 }
 .dropmenu{
-    position: relative;
+    position: fixed;
+    opacity: 0;
+    z-index: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateX(0);
   }
   
   .dropdown-container {
-    position: absolute;
+    position: fixed;
     background-color: #24262b; /* Dark background color */
     color: #ffffff; /* Light text color */
     border: 1px solid #ccc;
@@ -51,9 +55,20 @@
     z-index: 1;
     padding: 0;
     margin: 0;
+    min-width: 150px;
     list-style: none;
-    top:76px;
-    left:30px;
+    top:63px;
+    left:0px;
+   
+  }
+  .dropmenu.show {
+    left: 2; /* Slide into view */
+    opacity: 1;
+  }
+  
+  .dropmenu.hide {
+    left: -300px; /* Slide out of view */
+    opacity: 0;
   }
 /*Shadow*/
  .carousel-control-prev{
@@ -63,3 +78,34 @@
  .list-group-item{
   max-width: "120px";
  }
+ /* Profile container */
+/* Profile container with transition for smooth appearance */
+.profile-container {
+  position: fixed; /* Changed from absolute to fixed for better control */
+  top: 78px;
+  right: -300px; /* Start position off-screen */
+  width: 300px;
+  background-color: #f9f9f9;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform: translateX(0); /* Ensures no unwanted initial movement */
+}
+.list-group-item{
+  background-color: #28a745;
+}
+.list-group-item:hover{
+  background-color: #f9f9f9;
+}
+.profile-container.show {
+  right: 0; /* Slide into view */
+  opacity: 1;
+}
+
+.profile-container.hide {
+  right: -300px; /* Slide out of view */
+  opacity: 0;
+}
+
+

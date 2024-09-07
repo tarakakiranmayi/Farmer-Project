@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import {useForm} from 'react-hook-form';
 import  { useEffect, useState } from 'react';
+import Spinner from '../Spinner/Spinner';
 // import {useForm} from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import '../Login/Login.css'
@@ -10,6 +11,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import UserFarmerLoginThunk, { userfarmerThunk } from '../../Redux/slices/UserFarmerLoginThunk';
 function Login() {
     let {register,handleSubmit,formState:{errors}}=useForm()
+    const [isLoading, setIsLoading] = useState(false);
     let navigate=useNavigate()
     let [err,setErr]=useState('')
     let dispatch=useDispatch()
@@ -17,6 +19,9 @@ function Login() {
     //(data)
     async function handleFormSubmit(obj)
     {   
+        
+       setIsLoading(true);
+       
         //(obj)
         // let res= await axios.post(' http://localhost:3030/userapi/login',obj, {
         //     headers: {
@@ -38,7 +43,12 @@ function Login() {
     }
   //(data)
   if(data.loginStatus==true){
-    navigate('/')
+    // navigate('/')
+    setTimeout(() => {
+        // After processing, navigate to the home page
+        navigate('/');
+      }, 2000); // Adjust the delay as necessary (e.g., 2000ms = 2 seconds)
+    
   }
  
 
@@ -46,6 +56,7 @@ function Login() {
    
   return (
     <div className='main w-50 border-5 mx-auto border-dark shadow-lg my-5 p-3'>
+         {isLoading && <Spinner />} 
        <h2 className='text-center m-2'>Login</h2>
        <form onSubmit={handleSubmit(handleFormSubmit)}>
        <div className='mb-3 row mx-1 form-check d-flex mb-1'>

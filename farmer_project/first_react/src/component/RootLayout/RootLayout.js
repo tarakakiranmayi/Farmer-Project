@@ -6,7 +6,7 @@ import { Nav } from 'react-bootstrap'
 import Navbar1 from '../Navbar/Navbar1'
 function RootLayout() {
   return (
-    <div>
+    <div >
         <Navbar1/>
         <div style={{ minHeight: "10vh" , marginBottom :"13px"}}>
         <Outlet />

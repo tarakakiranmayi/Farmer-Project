@@ -21,6 +21,7 @@ const userEmail=''
       try {
         const res = await axios.get('http://localhost:3030/userapi/users');
         console.log(res)
+        
         setUsers(res.data);
       } catch (err) {
         console.error(err);

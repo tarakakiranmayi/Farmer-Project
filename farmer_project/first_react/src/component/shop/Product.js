@@ -55,12 +55,12 @@ const Product = () => {
   },[])
 
   return (
-    <div className="container">
+    <div className="container1">
       <div className="product-details">
         <img className='d-block mx-auto' src={productData.image} alt={productData.productName} />
         
-        <div className='d-flex' style={{justifyContent:'space-around'}}>
-        <div>
+        <div className='d-flex m-1 p-2' style={{justifyContent:'space-around' ,border:'2px solid #ccc '}}>
+        <div >
         <h5>{productData.productName}</h5>
         <p>Price: ${productData.productPrice}</p>
         <p>Category: {productData.category}</p>

@@ -45,7 +45,7 @@ Userapp.get('/users',async(req,res)=>{
   const userData=await User.find({})
   // //(userData)
  
-  res.send(userData)i
+  res.send(userData)
 })
 // Route to handle product image upload
 Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
@@ -109,6 +109,7 @@ Userapp.post('/NewUser', upload.single('photo'),async(req,res)=>{
 
 Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
     //("called")
+    // console.log("called")
     try {
       const email = req.params.email;
       const newupdate=req.body
@@ -121,13 +122,13 @@ Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
         last_updated: new Date()
       };
       //(updateData)
-  
+      // console.log(updateData)
       if (req.file) {
         updateData.photo = req.file.buffer;
         updateData.photoAdded=true
         
       }
-  
+       //(updateData)
       const updatedUser = await User.findByIdAndUpdate(dbuser._id, updateData, { new: true });
   
       if (!updatedUser) {
@@ -135,10 +136,10 @@ Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
       }
     //   const base64Image = updatedUser.photo.toString('base64');
     const buffer = Buffer.from(updatedUser.photo);
-
+    //(buffer)
     // Convert the buffer to a base64 string
     const base64Image = buffer.toString('base64');
-
+      
       res.status(200).send({ message: 'User profile updated successfully', user:  updatedUser,image:base64Image});
     } catch (error) {
       console.error(error);
@@ -150,11 +151,13 @@ Userapp.put('/userUpdate/:email', upload.single('image'), async (req, res) => {
 Userapp.get('/user/:_id',async(req,res)=>{
     const dbuser=await User.findOne({_id:req.params._id})
     //(dbuser)
+    //(dbuser)
+    //("called",dbuser)
     const buffer = Buffer.from(dbuser.photo);
 
     // Convert the buffer to a base64 string
     const base64Image = buffer.toString('base64');
-
+    //(base64Image)
     res.send({ photo: base64Image });
 })
 

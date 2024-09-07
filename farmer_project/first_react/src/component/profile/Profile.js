@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-
+import { FaArrowLeft } from 'react-icons/fa';
 const Profile = () => {
   let data = useSelector((state) => state.userFarmer);
-  //(data);
+  console.log(data)
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({});
@@ -30,6 +30,7 @@ const Profile = () => {
       async function fetchUserPhoto() {
         try {
           let res = await axios.get(`http://localhost:3030/userapi/user/${data.currentUser._id}`);
+          console.log(res)
           const base64Image = res.data.photo;
           //(base64Image)
           setImageData(`data:image/jpeg;base64,${base64Image}`);
@@ -60,6 +61,7 @@ const Profile = () => {
           },
         }
       );
+      console.log(response)
 
       if (response.data.message === 'User profile updated successfully' && response.data.user.photo) {
         const base64Image = response.data.image;
@@ -72,9 +74,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-overlay" style={{ position: 'relative' }}>
-      <div className="container" style={{ position: 'absolute', top: '150px', alignItems: 'center', justifyContent: 'center', maxWidth: '400px' }}>
-        <div className="card" style={{ backgroundColor: 'white', minWidth: '360px' }}>
+    <div className="profile-overlay" style={{ display:'flex',justifyContent:'center',alignItems:'center' }}>
+      <div className="container " style={{}}>
+        <div className="card" style={{ backgroundColor: 'white', maxWidth: '360px' }}>
           <div className="card-img">
             {!image && (
               <form onSubmit={handleSubmit}>
@@ -101,6 +103,7 @@ const Profile = () => {
             <h6>{data.currentUser.email}</h6>
             <p>About</p>
           </div>
+          {/* <Link to ='/' className='text-center' style={{listStyle:'none'}}><span className='text-center'>Home <FaArrowLeft></FaArrowLeft></span></Link> */}
         </div>
       </div>
     </div>
