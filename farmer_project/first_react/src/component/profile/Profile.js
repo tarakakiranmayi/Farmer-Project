@@ -28,16 +28,31 @@ const Profile = () => {
   useEffect(() => {
     if (data.currentUser.photoAdded) {
       async function fetchUserPhoto() {
-        try {
-          let res = await axios.get(`http://localhost:3030/userapi/user/${data.currentUser._id}`);
-          console.log(res)
-          const base64Image = res.data.photo;
-          //(base64Image)
-          setImageData(`data:image/jpeg;base64,${base64Image}`);
-          setImage(true);
-        } catch (error) {
-          console.error('Error fetching image:', error);
+        if(data.currentUser.area==null){
+          try {
+            let res = await axios.get(`http://localhost:3030/userapi/user/${data.currentUser._id}`);
+            console.log(res)
+            const base64Image = res.data.photo;
+            //(base64Image)
+            setImageData(`data:image/jpeg;base64,${base64Image}`);
+            setImage(true);
+          } catch (error) {
+            console.error('Error fetching image:', error);
+          }
         }
+        else{
+          try {
+            let res = await axios.get(`http://localhost:3030/farmersapi/user/${data.currentUser._id}`);
+            console.log(res)
+            const base64Image = res.data.photo;
+            //(base64Image)
+            setImageData(`data:image/jpeg;base64,${base64Image}`);
+            setImage(true);
+          } catch (error) {
+            console.error('Error fetching image:', error);
+          }
+        }
+       
       }
       fetchUserPhoto();
     }
@@ -45,24 +60,40 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let response
     try {
       const formDataWithFile = new FormData();
       formDataWithFile.append('image', file);
       Object.keys(formData).forEach((key) => {
         formDataWithFile.append(key, data[key]);
       });
-
-      const response = await axios.put(
-        `http://localhost:3030/userapi/userUpdate/${data.currentUser.email}`,
-        formDataWithFile,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-      console.log(response)
-
+  if(data.currentUser.area==null){  
+    response = await axios.put(
+    `http://localhost:3030/userapi/userUpdate/${data.currentUser.email}`,
+    formDataWithFile,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
+  console.log(response)
+}
+else{
+  console.log("why me..")
+  response = await axios.put(
+    `http://localhost:3030/farmersapi/userUpdate/${data.currentUser.email}`,
+    formDataWithFile,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
+  console.log(response)
+}
+    
+     
       if (response.data.message === 'User profile updated successfully' && response.data.user.photo) {
         const base64Image = response.data.image;
         setImageData(`data:image/jpeg;base64,${base64Image}`);
@@ -102,6 +133,12 @@ const Profile = () => {
             <h6>{data.currentUser.address}</h6>
             <h6>{data.currentUser.email}</h6>
             <p>About</p>
+            {
+              data.currentUser.area &&
+              <div>
+              <h6>{data.currentUser.area}</h6>
+              <h6>Price:{data.currentUser.pricePerHour}</h6></div>
+            }
           </div>
           {/* <Link to ='/' className='text-center' style={{listStyle:'none'}}><span className='text-center'>Home <FaArrowLeft></FaArrowLeft></span></Link> */}
         </div>

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MdWavingHand } from 'react-icons/md';
 import { FaHome } from 'react-icons/fa';
 import { resetState } from '../../Redux/slices/UserFarmerLoginThunk';
+
 import Profile from '../profile/Profile';
 import '../Navbar/Navbar1.css';
 
@@ -15,9 +16,12 @@ function Navbar1() {
   const dispatch = useDispatch();
   const [showProfile, setShowProfile] = useState(false);
   const data = useSelector((state) => state.userFarmer);
-
+  
   function Logout() {
-    dispatch(resetState());
+    // dispatch(resetState());
+    sessionStorage.clear()
+    localStorage.clear()
+    window.location.reload()
   }
 
   return (

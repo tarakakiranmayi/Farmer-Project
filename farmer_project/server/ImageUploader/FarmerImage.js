@@ -45,8 +45,8 @@ const FarmerSchema = new Schema({
     payment_methods: [{ type: String }],
     average_response_time: { type: String },
     total_jobs_contracts: { type: Number },
-    
-    
+    online:{type:Boolean,default:false},
+    photoAdded: { type: Boolean, default: false },
     join_date: { type: Date },
     last_updated: { type: Date },
     

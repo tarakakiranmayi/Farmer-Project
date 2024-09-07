@@ -148,6 +148,8 @@ function Register() {
           }
           <p className='text-success fs-5 text-center mb-1'>
            <NavLink style={{textDecoration:"None"}} onClick={change} to="/Login">Already Registered</NavLink>
+           <br></br>
+           <NavLink style={{textDecoration:"None"}}  to="/RegisterPage">Are u Farmer?</NavLink>
           </p>
         </div>
   )

@@ -46,6 +46,7 @@ function Login() {
     // navigate('/')
     setTimeout(() => {
         // After processing, navigate to the home page
+        
         navigate('/');
       }, 2000); // Adjust the delay as necessary (e.g., 2000ms = 2 seconds)
     
@@ -56,7 +57,7 @@ function Login() {
    
   return (
     <div className='main w-50 border-5 mx-auto border-dark shadow-lg my-5 p-3'>
-         {isLoading && <Spinner />} 
+         {isLoading && !data.errorOccured && <Spinner />} 
        <h2 className='text-center m-2'>Login</h2>
        <form onSubmit={handleSubmit(handleFormSubmit)}>
        <div className='mb-3 row mx-1 form-check d-flex mb-1'>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './RegisterPage.css'
+import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,7 +29,8 @@ const RegisterPage = () => {
     join_date: '',
     last_updated: '',
   });
-
+  const nav=useNavigate()
+  let [err,setErr]=useState('')
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -38,7 +41,13 @@ const RegisterPage = () => {
     try {
       const res=await axios.post('http://localhost:3030/farmersapi/register', formData);
       console.log(res)
-      alert('Registration successful');
+      if(res.data=='Registration successful')
+      {
+        nav('/Login')
+      }
+      else{
+         setErr(res.data)
+      }
     } catch (error) {
       console.error('There was an error!', error);
     }
@@ -56,6 +65,12 @@ const RegisterPage = () => {
       <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" required />
       {/* Add inputs for other fields similarly */}
       <button type="submit">Register</button>
+      {
+        err &&
+        <p className='text-danger text-center m-1 p-2'>{err}</p>
+      }
+      <p className='text-center'>
+       <NavLink style={{textDecoration:"None"}} className='text-center' to="/Login">Already Registered</NavLink></p>
     </form>
   );
 };

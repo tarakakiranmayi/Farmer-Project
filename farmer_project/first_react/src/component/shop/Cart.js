@@ -117,7 +117,7 @@ function Cart() {
     return (
         <>
         {showConfetti==true ? <><Confetti /> 
-         <div className="message">
+         <div className="message bg-success h-50 w-50">
          <h1>Thanks for buying our product!</h1>
          <p>Your order will be delivered soon.</p>
        </div></>
