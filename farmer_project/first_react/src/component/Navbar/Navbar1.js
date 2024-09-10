@@ -51,7 +51,7 @@ function Navbar1() {
               </div>
             
             <li>
-              <NavLink className="nav-link active " to="/"><FaHome className='' style={{ fontSize: "30px" ,color: '#28a745'}} /></NavLink>
+              <NavLink className="nav-link active " to="/" onClick={()=>{window.location.reload()}}><FaHome className='' style={{ fontSize: "30px" ,color: '#28a745'}} /></NavLink>
             </li>
           </ul>
 
@@ -72,12 +72,12 @@ function Navbar1() {
                 {!showProfile ? (
                   <FontAwesomeIcon
                     icon={faUser}
-                    style={{ marginTop: "16px", padding: "0.1px", margin: "0px",color: '#28a745',fontSize:'30' }}
+                    style={{ marginTop: "16px", padding: "0.1px", margin: "0px",color: '#28a745',fontSize:'25' }}
                     onClick={() => setShowProfile(true)}
                   />
                 ) : (
                   <FaTimes
-                    size={30}
+                    size={25}
                     style={{ cursor: 'pointer', color: '#28a745' }}
                     onClick={() => setShowProfile(false)}
                   />

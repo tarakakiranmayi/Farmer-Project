@@ -79,12 +79,12 @@ const userEmail=user.email
       ) : (
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {users.map((user, index) => (
-            <li key={index} className="w-75 "style={{ margin: '10px 10px' ,alignItems:'center', display:'block',margin:'auto',border:'1px solid #ccc'}}>
+            <li key={index} className="w-75 "style={{ margin: '10px 10px' ,alignItems:'center', display:'block',margin:'auto',border:'1px solid #ccc',borderRadius:'25px',boxShadow:' rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
               
               {user.area && user.busy==false && 
-              <div className='d-flex w-100 mx-auto m-2 p-2 '  style={{justifyContent:'space-between',minHeight:'25%'}}>
+              <div className='d-flex  m-2 p-2 '  style={{justifyContent:'space-around',minHeight:'23%',marginTop:'19px'}}>
              
-              <div className='w-75 text-start m-1 p-1'>
+              <div className='w-75 text-start m-3 p-1'>
               <p> Email : {user.email}{'  '}</p>
                 <p>
                   Name : {user.name}

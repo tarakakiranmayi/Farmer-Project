@@ -63,7 +63,8 @@ const UploadForm = () => {
   };
 
   return (
-    <div className="upload-form">
+    <div className='happy h-100' style={{display:'flex',alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+    <div className="upload-form w-100">
       <h2>Upload Product Image</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -144,6 +145,7 @@ const UploadForm = () => {
         </div> */}
         <button type="submit">Upload Product</button>
       </form>
+    </div>
     </div>
   );
 };
