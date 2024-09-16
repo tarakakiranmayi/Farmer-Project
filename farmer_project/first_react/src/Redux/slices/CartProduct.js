@@ -32,11 +32,13 @@ export const ProductSlice = createSlice({
   },
   reducers: {
     AddProduct: (state, action) => {
+     
       state.ProductCount.push(action.payload);
       saveToLocalStorage(state.ProductCount); // Save to localStorage after adding a product
     },
     RemoveProduct: (state, action) => {
-      state.ProductCount = state.ProductCount.filter(item => item !== action.payload);
+      console.log(action.payload)
+      state.ProductCount = state.ProductCount.filter(item => item._id !== action.payload._id);
       saveToLocalStorage(state.ProductCount); // Save to localStorage after removing a product
     },
   },

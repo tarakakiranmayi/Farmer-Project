@@ -14,7 +14,7 @@ function Footer() {
            <li><a href="#">about us</a></li>
            <li><a href="#">our services</a></li>
            <li><a href="#">privacy policy</a></li>
-           <li><a href="#">affiliate program</a></li>
+          
          </ul>
        </div>
        <div className="footer-col">
@@ -30,10 +30,10 @@ function Footer() {
        <div className="footer-col">
          <h4>online shop</h4>
          <ul>
-           <li><a href="#">watch</a></li>
-           <li><a href="#">bag</a></li>
-           <li><a href="#">shoes</a></li>
-           <li><a href="#">dress</a></li>
+           <li><a href="#">Organic Products</a></li>
+           <li><a href="#">Farm</a></li>
+           <li><a href="#">Culitvate Land</a></li>
+          
          </ul>
        </div>
        <div className="footer-col">

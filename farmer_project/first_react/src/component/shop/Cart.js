@@ -2,22 +2,53 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './Cart.css';
+import { Link } from 'react-router-dom';
+import { FaStore } from 'react-icons/fa';
 import Confetti from 'react-confetti';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { AddProduct,RemoveProduct } from '../../Redux/slices/CartProduct';
 function Cart() {
     const [products, setProducts] = useState([]);
     const [orderId, setOrderId] = useState('');
     const [showConfetti, setShowConfetti] = useState(false);
    const navi=useNavigate()
+   const dispatch=useDispatch()
     // Retrieve products from Redux store
     let res = useSelector((state) => state.product);
     let data=useSelector((state)=>state.userFarmer)
     // //(data)
+    
+   
     useEffect(() => {
         if (res) {
-            setProducts(res.ProductCount);
+            
+            let a=res.ProductCount
+           console.log(a)
+            const def=a.map((data)=>({
+                ...data,
+                'count':1,
+                'totalprice':data.productPrice
+            }))
+            setProducts(def)
+           
         }
     }, [res]);
+
+   function subtract(obj){
+    // console.log(obj)
+   dispatch(RemoveProduct(obj))
+   }
+   function add(obj)
+   {
+    setProducts(prevProducts =>
+        prevProducts.map(product =>
+          product._id === obj._id
+            ? { ...product, count: product.count + 1, totalprice: product.productPrice+product.totalprice }
+            : product
+        )
+      );
+   }
 
     useEffect(() => {
         // Load Razorpay script dynamically
@@ -41,7 +72,7 @@ function Cart() {
         // setShowConfetti(true);
         try {
             // Calculate the total price
-            const totalPrice = products.reduce((sum, product) => sum + product.productPrice, 0);
+            const totalPrice = products.reduce((sum, product) => sum + product.totalprice, 0);
 
             // Prepare payment data
             const paymentData = {
@@ -122,17 +153,26 @@ function Cart() {
          <p>Your order will be delivered soon.</p>
        </div></>
         :
-        <div className='m-1' style={{ backgroundColor: 'cyan' }}>
+        <div className='m-1' style={{  }}>
             <div className='text-center p-3 m-3'>
                 Shopping bag
             </div>
-            <div className="cart-container">
+            <div className="cart-container" style={{boxShadow:'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;'}}>
                 {products.map((product) => (
                     <div key={product._id} className="cart-item d-flex w-100 h-100" style={{ justifyContent: 'space-around' }}>
                         <img src={product.image} height='50' width='50' alt={product.productName} />
-                        <h2>{product.productName}</h2>
-                        <p>Price: ₹{product.productPrice}</p>
-                        <p>Total: ₹{product.productPrice}</p>
+                        <h2 style={{width:'25%'}}>{product.productName}</h2>
+                        <div style={{width:'10%'}}>
+                        <button style={{border:'1px solid ',fontSize:'16px'}} onClick={()=>{add(product)}}>+</button>
+                        <button style={{border:'1px solid '}} onClick={()=>{subtract(product)}}>-</button>
+                        </div>
+                      
+                        <p style={{width:'15%'}}>{product.count<=1 ? <span> 1 X </span> :<span> {product.count} X</span>}Price: ₹{product.productPrice}</p>
+                        {
+                            product.count==0 ?<p style={{width:'10%'}}>Total: ₹{product.productPrice}</p>:<p style={{width:'10%'}}>Total: ₹{product.totalprice}</p>
+                        }
+                       
+
                     </div>
                 ))}
                  <button className='btn-success btn d-block mx-auto w-25 m-3 p-3' onClick={pay}>Pay</button>
@@ -140,6 +180,13 @@ function Cart() {
            
            
         </div>}
+        <div className=' 
+        backstore text-center'>
+        <Link   to="/shop" style={{textDecoration:'none',color:' #28a745'}}>
+        <FaStore /> Back to Shop
+      </Link>
+        </div>
+       
         </>
     );
 }

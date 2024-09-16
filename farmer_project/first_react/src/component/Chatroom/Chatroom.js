@@ -79,7 +79,7 @@ function Chatroom() {
       };
     
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+    <div style={{ textAlign: 'center', marginTop: '100px' }}>
       <h2>Chat with {recipientEmail}</h2>
       <div
         style={{
@@ -107,7 +107,7 @@ function Chatroom() {
           placeholder="Type your message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          style={{ width: '40%', padding: '10px' }}
+          style={{ width: '50%', padding: '10px' }}
         />
         <button onClick={handleSendMessage} style={{ padding: '10px 20px', marginLeft: '10px' }}>
           Send

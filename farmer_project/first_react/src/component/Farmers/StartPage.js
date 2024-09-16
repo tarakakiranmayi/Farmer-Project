@@ -68,18 +68,18 @@ const userEmail=user.email
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h2>Welcome, {user.name}</h2>
+    <div  id="startpage" style={{ textAlign: 'center', marginTop: '' ,minHeight:'850px'}}>
+      <h2 className='m-1 p-1'>Welcome, {user.name}</h2>
       {
-      user.area ?<h3>Available Users :</h3> : <h3>Available Farmers :</h3>
+      user.area ?<h3>Available Contractors :</h3> : <h3>Available Farmers :</h3>
     }
      
       {users.length === 0 ? (
         <p>No other users available to chat.</p>
       ) : (
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
+        <ul style={{ listStyleType: 'none', padding: 0,backgroundImage:'None',marginTop:'50px' }}>
           {users.map((user, index) => (
-            <li key={index} className="w-75 "style={{ margin: '10px 10px' ,alignItems:'center', display:'block',margin:'auto',border:'1px solid #ccc',borderRadius:'25px',boxShadow:' rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
+            <li key={index} className=" chatbox w-75 "style={{ marginTop:'20px' ,alignItems:'center', display:'block',margin:'auto',border:'1px solid #ccc',borderRadius:'25px',boxShadow:' rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
               
               {user.area && user.busy==false && 
               <div className='d-flex  m-2 p-2 '  style={{justifyContent:'space-around',minHeight:'23%',marginTop:'19px'}}>
@@ -115,10 +115,13 @@ const userEmail=user.email
 
               {
                 user.area==null && 
-                 <div className='d-flex w-50 mx-auto justify-content-space-between m-1 p-1' style={{justifyContent:'space-between'}}>
-                 <div className='w-75'>
+                 <div className='d-flex w-100 mx-auto justify-content-space-between m-1 p-3' style={{justifyContent:'space-between'}}>
+                 <div className='text-start'>
                 <p>
                   Name : {user.name}
+                </p>
+                <p>
+                  Email : {user.email}
                 </p>
                 
                  </div>

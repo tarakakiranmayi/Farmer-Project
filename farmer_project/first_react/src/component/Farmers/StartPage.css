@@ -11,7 +11,14 @@
     overflow: hidden;
     transition: background-color 0.3s ease;
   }
-
+  .chatbox:hover{
+    background-color: aqua;
+  }
+  #startpage{
+    background-image: url('https://c8.alamy.com/comp/2PW1XYP/chatting-to-neighbouring-farmers-about-their-crop-yield-a-young-woman-using-a-cellphone-while-working-on-a-farm-2PW1XYP.jpg');
+    background-image: cover;
+    
+  }
   .online-button:before {
     content: '';
     position: absolute;

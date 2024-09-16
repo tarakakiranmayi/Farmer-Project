@@ -46,7 +46,7 @@ function Card(props) {
               </p>
             </div>
             <div style={{ }}>
-              <h3 className='text-danger text-start'>${props.data.productPrice}</h3>
+              <h3 className='text-danger text-start'>₹{props.data.productPrice}</h3>
             </div>
             <div className='card-footer'>
               <button className='btn btn-success d-block mx-auto' onClick={goToUser}>FIND</button>

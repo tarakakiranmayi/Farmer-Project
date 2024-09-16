@@ -56,13 +56,13 @@ const Product = () => {
 
   return (
     <div className="container1">
-      <div className="product-details">
-        <img className='d-block mx-auto' src={productData.image} alt={productData.productName} />
+      <div className="product-details" style={{boxShadow: ''}}>
+        <img className='d-block mx-auto' src={productData.image} alt={productData.productName}  style={{}}/>
         
-        <div className='d-flex m-1 p-2' style={{justifyContent:'space-around' ,border:'2px solid #ccc '}}>
+        <div className='d-flex m-1 p-2' style={{justifyContent:'space-around' ,border:'2px solid #ccc ' }}>
         <div >
         <h5>{productData.productName}</h5>
-        <p>Price: ${productData.productPrice}</p>
+        <p>Price: ₹{productData.productPrice}</p>
         <p>Category: {productData.category}</p>
         <p>Description: {productData.description}</p>
         <p>Payment Methods: {productData.paymentMethods}</p>
@@ -80,10 +80,10 @@ const Product = () => {
         <p className='text-center m-1'> <Link className='btn btn-success mx-1 mt-1' to='/cart' onClick={()=>{
           dispatch(AddProduct(productData))
 
-        }}>Add to card</Link></p>
+        }}  style={{}}>Add to card</Link></p>
       </div>
      
-      <div className="product-details">
+      <div className="product-details" style={{boxShadow: ''}}>
       <h4 className='text-center m-4'>Comments</h4>
     { productData.comments && productData.comments.map((comment, index) => (
       <div key={index} className="bg-light p-3">
@@ -112,7 +112,7 @@ const Product = () => {
       </div>
     ))}</div>
   
-      <div className="comment-section">
+      <div className="comment-section" style={{}}>
       {/* {productData.comments &&    <p>Comments{
 
 <div>

@@ -44,9 +44,9 @@ function Navbar1() {
               <div  className={`d-flex justify-content-end dropmenu ${clicked ? 'show':'hide'}`}>
                 <ul className="dropdown-container list-group w-25" style={{ maxWidth: "150px" }}>
                
-                  <NavLink className="list-group-item " to="/startpage"><span className='text-black '>Chat Room</span></NavLink>
-                  <NavLink className="list-group-item list-group-item-action" to="/shop"><span className='text-black'>Organic Shop</span></NavLink>
-                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="/Login" onClick={Logout}><span className='text-black'>Logout</span></NavLink>
+                  <NavLink className="list-group-item " to="/startpage" onClick={()=>setClicked(false)}><span className='text-black ' >Chat Room</span></NavLink>
+                  <NavLink className="list-group-item list-group-item-action" to="/shop"  onClick={()=>setClicked(false)}><span className='text-black'>Organic Shop</span></NavLink>
+                  <NavLink className="list-group-item list-group-item-action" aria-disabled="true" to="/Login" onClick={Logout} ><span className='text-black'>Logout</span></NavLink>
                 </ul>
               </div>
             
