@@ -147,11 +147,13 @@ function Cart() {
 
     return (
         <>
-        {showConfetti==true ? <><Confetti /> 
-         <div className="message bg-success h-50 w-50">
+        {showConfetti==true ? <>
+        <Confetti /> 
+         <div className="message">
          <h1>Thanks for buying our product!</h1>
          <p>Your order will be delivered soon.</p>
-       </div></>
+       </div>
+       </>
         :
         <div className='m-1' style={{  }}>
             <div className='text-center p-3 m-3'>
@@ -179,13 +181,13 @@ function Cart() {
             </div>
            
            
-        </div>}
-        <div className=' 
-        backstore text-center'>
+            <div className=' backstore text-center'>
         <Link   to="/shop" style={{textDecoration:'none',color:' #28a745'}}>
         <FaStore /> Back to Shop
       </Link>
         </div>
+        </div>}
+      
        
         </>
     );
